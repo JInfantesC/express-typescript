@@ -4,7 +4,7 @@ const apiRouter = express.Router();
 
 
 function loggerMiddleware(request: express.Request, response: express.Response, next) {
-    console.log(`${request.method} ${request.path}`);
+    console.log(`${request.method} ${request.path} ${request.ip} ${request.headers['user-agent']}`);
     next();
 }
 
@@ -18,11 +18,9 @@ app.use(loggerMiddleware);
 
 apiRouter.get('/hello', (request, response) => {
     response.send(`Hello ` + (request.query.hello || "world") + "!");
-    console.log(request.query)
 });
 
 apiRouter.post('/hello', (request, response) => {
-    console.log(request.body)
     response.send(request.body);
 });
 
