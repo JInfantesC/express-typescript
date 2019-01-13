@@ -5,16 +5,21 @@
     "main": "src/server.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "ts-node ./src/server.ts"
+        "dev": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\"",
+        "compile": "tsc && node dist/server.js"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
         "@types/node": "^10.12.18",
         "body-parser": "^1.18.3",
-        "express": "^4.16.4"
+        "dotenv": "^6.2.0",
+        "envalid": "^4.1.4",
+        "express": "^4.16.4",
+        "mysql": "^2.16.0"
     },
     "devDependencies": {
+        "nodemon": "^1.18.9",
         "ts-node": "^7.0.1",
         "typescript": "^3.2.2"
     }

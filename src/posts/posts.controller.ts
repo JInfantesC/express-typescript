@@ -1,6 +1,6 @@
 import * as express from "express"
 import Post from "./posts.interface"
-var path = require("path")
+const path = require("path")
 
 class PostsController {
     public path = "/posts";
@@ -22,7 +22,7 @@ class PostsController {
         this.router.post(this.path, this.createAPost.bind(this))
 
         this.router.get(this.path + "/form", function(request: express.Request, response: express.Response) {
-            response.sendFile(path.join(__dirname, "form.html"))
+            response.sendFile(path.join(__dirname, "../../files", "form.html"))
         })
     }
     private getAllPosts(request: express.Request, response: express.Response) {// Se asocia la instancia de la clase con Bind. al llamarse como función, el contexto cambia.
@@ -34,5 +34,6 @@ class PostsController {
         this.posts.push(post)
         response.send(post)
     }
+
 }
 export default PostsController;
